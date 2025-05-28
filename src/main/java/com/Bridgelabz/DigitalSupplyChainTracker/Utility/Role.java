@@ -7,7 +7,7 @@ public enum Role {
 	Admin,
 	Supplier,
 	Transporter,
-	Warehousemanager;
+	WarehouseManager;
 	
 //	public static Role fromString(String roleStr) {
 //        return Arrays.stream(Role.values())
