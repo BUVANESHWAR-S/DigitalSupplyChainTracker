@@ -1,8 +1,8 @@
-package com.Bridgelabz.DigitalSupplyChainTracker.entity;
-
-public enum Role {
-	Admin,
-	Supplier,
-	Transporter,
-	WarehouseManager
-}
+//package com.Bridgelabz.DigitalSupplyChainTracker.entity;
+//
+//public enum Role {
+//	Admin,
+//	Supplier,
+//	Transporter,
+//	WarehouseManager
+//}
