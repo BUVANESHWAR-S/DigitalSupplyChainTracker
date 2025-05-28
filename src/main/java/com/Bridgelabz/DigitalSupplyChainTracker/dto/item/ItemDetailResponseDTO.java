@@ -2,7 +2,7 @@ package com.Bridgelabz.DigitalSupplyChainTracker.dto.item;
 
 import java.time.LocalDateTime;
 
-public class ItemDetailResponse {
+public class ItemDetailResponseDTO {
     private Integer id;
     private String name;
     private String category;
@@ -10,10 +10,10 @@ public class ItemDetailResponse {
     private SupplierInfo supplier;
 
     // Default constructor
-    public ItemDetailResponse() {}
+    public ItemDetailResponseDTO() {}
 
     // Parameterized constructor
-    public ItemDetailResponse(Integer id, String name, String category, LocalDateTime createdDate, SupplierInfo supplier) {
+    public ItemDetailResponseDTO(Integer id, String name, String category, LocalDateTime createdDate, SupplierInfo supplier) {
         this.id = id;
         this.name = name;
         this.category = category;

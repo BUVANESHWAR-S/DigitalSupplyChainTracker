@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ItemSummaryResponse {
+public class ItemSummaryResponseDTO {
 	
 	private Integer id;
     private String name;
@@ -31,8 +31,7 @@ public class ItemSummaryResponse {
 		this.category = category;
 	}
 	
-	public ItemSummaryResponse(Integer id, String name, String category) {
-		super();
+	public ItemSummaryResponseDTO(Integer id, String name, String category) {
 		this.id = id;
 		this.name = name;
 		this.category = category;

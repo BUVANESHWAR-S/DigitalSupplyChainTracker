@@ -8,28 +8,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemCreateRequest;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemCreateRequestDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Item;
-import com.Bridgelabz.DigitalSupplyChainTracker.service.Item.ItemService;
+import com.Bridgelabz.DigitalSupplyChainTracker.service.Item.ItemServiceImplementation;
 
 @RestController
 public class ItemController {
 	
 	@Autowired
-	ItemService itemService;
+	ItemServiceImplementation itemService;
 	
-	@PostMapping("/item")
-	public ResponseEntity<?> postItem(@RequestBody ItemCreateRequest item) {
-		System.out.println(item.getSupplierId());
-		return ResponseEntity.ok(item);
+	@PostMapping("/api/items")
+	public ResponseEntity<?> postItem(@RequestBody ItemCreateRequestDTO item) {
+		return itemService.addItem(item);
 	}
 	
-	@GetMapping("/api/items")
-	public ResponseEntity<?> getItems() {
-		return itemService.getItems();
+	@GetMapping("/api/items/{userId}")
+	public ResponseEntity<?> getItems(@PathVariable int userId) {
+		return itemService.getItems(userId);
 	}
 	
-	@GetMapping("/item/{id}")
+	@GetMapping("/api/item/{id}")
 	public ResponseEntity<?> getItem(@PathVariable int id) {
 		return itemService.getItem(id);
 		

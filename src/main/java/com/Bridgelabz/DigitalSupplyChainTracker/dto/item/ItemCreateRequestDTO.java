@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ItemCreateRequest {
+public class ItemCreateRequestDTO {
     public String getName() {
 		return name;
 	}
