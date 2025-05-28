@@ -1,8 +1,13 @@
 package com.Bridgelabz.DigitalSupplyChainTracker.service.Shipment;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentRequest;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentResponse;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
 import com.Bridgelabz.DigitalSupplyChainTracker.repository.ShipmentRepository;
 
@@ -45,19 +50,19 @@ public class ShipmentServiceImpl implements ShipmentService {
     }
 
     @Override
-    public ShipmentResponseDTO getShipmentById(Long id) {
+    public ShipmentResponse getShipmentById(Long id) {
         Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Shipment not found"));
         return mapToResponseDto(shipment);
     }
 
     @Override
-    public List<ShipmentResponseDTO> getAllShipments() {
+    public List<ShipmentResponse> getAllShipments() {
         return shipmentRepo.findAll().stream().map(this::mapToResponseDto).collect(Collectors.toList());
     }
 
-    private ShipmentResponseDTO mapToResponseDto(Shipment s) {
-        ShipmentResponseDTO dto = new ShipmentResponseDTO();
-        dto.setShipmentId(s.getShipmentId());
+    private ShipmentResponse mapToResponseDto(Shipment s) {
+        ShipmentResponse dto = new ShipmentResponse();
+        dto.setShipmentId(s.getshipmentid());
         dto.setItemName(s.getItem().getName());
         dto.setFromLocation(s.getFromLocation());
         dto.setToLocation(s.getToLocation());

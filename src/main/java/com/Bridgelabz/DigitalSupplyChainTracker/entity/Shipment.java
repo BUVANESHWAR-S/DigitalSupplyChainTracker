@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 public class Shipment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE )
-	private long shipmentid;
+	private long shipmentId;
 	@ManyToOne
 	@JoinColumn(name = "itemid")
 	private Item itemid;
@@ -40,11 +40,11 @@ public class Shipment {
 	}
 
 	public long getShipmentid() {
-		return shipmentid;
+		return shipmentId;
 	}
 
 	public void setShipmentid(long shipmentid) {
-		this.shipmentid = shipmentid;
+		this.shipmentId = shipmentid;
 	}
 
 	public Item getItemid() {
