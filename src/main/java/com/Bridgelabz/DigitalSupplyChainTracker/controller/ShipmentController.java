@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentRequest;
-import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentResponse;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentRequest;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentResponse;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
 import com.Bridgelabz.DigitalSupplyChainTracker.service.Shipment.ShipmentService;
 

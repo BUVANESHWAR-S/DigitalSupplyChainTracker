@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentRequest;
-import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentResponse;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentRequest;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentResponse;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Item;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.User;

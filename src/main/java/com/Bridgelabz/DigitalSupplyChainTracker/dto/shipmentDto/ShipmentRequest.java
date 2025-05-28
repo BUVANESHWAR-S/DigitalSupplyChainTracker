@@ -1,4 +1,4 @@
-package com.Bridgelabz.DigitalSupplyChainTracker.dto;
+package com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;  // For validation if needed
