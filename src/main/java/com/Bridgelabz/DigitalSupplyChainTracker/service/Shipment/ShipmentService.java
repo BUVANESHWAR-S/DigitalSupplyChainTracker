@@ -8,8 +8,8 @@ import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
 
 public interface ShipmentService {
 	Shipment createShipment(ShipmentRequest dto);
-    void assignTransporter(Long shipmentId, Long transporterId);
-    void updateShipmentStatus(Long id, Shipment.CurrentStatus status);
-    ShipmentResponse getShipmentById(Long id);
+    void assignTransporter(int shipmentId, int transporterId);
+    void updateShipmentStatus(int id, Shipment.CurrentStatus status);
+    ShipmentResponse getShipmentById(int i);
     List<ShipmentResponse> getAllShipments();
 }

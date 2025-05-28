@@ -3,17 +3,17 @@ package com.Bridgelabz.DigitalSupplyChainTracker.dto;
 import java.time.LocalDate;
 
 public class ShipmentResponse {
-    private Long shipmentId;
+    private int shipmentId;
     private String itemName;
     private String fromLocation;
     private String toLocation;
     private LocalDate expectedDelivery;
     private String currentStatus;
     private String assignedTransporterName;
-	public Long getShipmentId() {
+	public int getShipmentId() {
 		return shipmentId;
 	}
-	public void setShipmentId(Long shipmentId) {
+	public void setShipmentId(int shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 	public String getItemName() {

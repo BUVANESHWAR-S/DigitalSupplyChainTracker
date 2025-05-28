@@ -8,8 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentRequest;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentResponse;
+import com.Bridgelabz.DigitalSupplyChainTracker.entity.Item;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
+import com.Bridgelabz.DigitalSupplyChainTracker.entity.User;
+import com.Bridgelabz.DigitalSupplyChainTracker.repository.ItemRepository;
 import com.Bridgelabz.DigitalSupplyChainTracker.repository.ShipmentRepository;
+import com.Bridgelabz.DigitalSupplyChainTracker.repository.UserRepository;
 
 @Service
 public class ShipmentServiceImpl implements ShipmentService {
@@ -20,37 +24,48 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     @Override
     public Shipment createShipment(ShipmentRequest dto) {
-        Item item = itemRepo.findById(dto.getItemId()).orElseThrow(() -> new RuntimeException("Item not found"));
+        // Logging values received in the DTO
+        System.out.println("Item ID: " + dto.getItemId());
+        System.out.println("From Location: " + dto.getFromLocation());
+        System.out.println("To Location: " + dto.getToLocation());
+        System.out.println("Expected Delivery: " + dto.getExpectedDelivery());
 
+        // Fetch Item entity by ID, or throw exception if not found
+        Item item = itemRepo.findById(dto.getItemId())
+            .orElseThrow(() -> new RuntimeException("Item not found with ID: " + dto.getItemId()));
+
+        // Create new Shipment and set properties from DTO
         Shipment shipment = new Shipment();
         shipment.setItem(item);
         shipment.setFromLocation(dto.getFromLocation());
         shipment.setToLocation(dto.getToLocation());
         shipment.setExpectedDelivery(dto.getExpectedDelivery());
-        shipment.setCurrentStatus(Shipment.CurrentStatus.CREATED);
+        shipment.setCurrentStatus(Shipment.CurrentStatus.Created);
 
+        // Save Shipment entity and return
         return shipmentRepo.save(shipment);
     }
 
+
     @Override
-    public void assignTransporter(Long shipmentId, Long transporterId) {
+    public void assignTransporter(int shipmentId, int transporterId) {
         Shipment shipment = shipmentRepo.findById(shipmentId).orElseThrow(() -> new RuntimeException("Shipment not found"));
         User transporter = userRepo.findById(transporterId).orElseThrow(() -> new RuntimeException("Transporter not found"));
 
         shipment.setAssignedTransporter(transporter);
-        shipment.setCurrentStatus(Shipment.CurrentStatus.IN_TRANSIT);
+        shipment.setCurrentStatus(Shipment.CurrentStatus.In_transit);
         shipmentRepo.save(shipment);
     }
 
     @Override
-    public void updateShipmentStatus(Long id, Shipment.CurrentStatus status) {
+    public void updateShipmentStatus(int id, Shipment.CurrentStatus status) {
         Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Shipment not found"));
         shipment.setCurrentStatus(status);
         shipmentRepo.save(shipment);
     }
 
     @Override
-    public ShipmentResponse getShipmentById(Long id) {
+    public ShipmentResponse getShipmentById(int id) {
         Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Shipment not found"));
         return mapToResponseDto(shipment);
     }

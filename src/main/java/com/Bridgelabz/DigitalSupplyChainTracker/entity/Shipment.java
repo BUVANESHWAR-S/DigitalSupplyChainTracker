@@ -12,14 +12,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Shipment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE )
-	private long shipmentId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	private int shipmentId;
 	@ManyToOne
 	@JoinColumn(name = "itemid")
 	private Item item;
@@ -40,11 +41,11 @@ public class Shipment {
 		Delayed
 	}
 
-	public long getShipmentId() {
+	public int getShipmentId() {
 		return shipmentId;
 	}
 
-	public void setShipmentId(long shipmentId) {
+	public void setShipmentId(int shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 
@@ -52,9 +53,11 @@ public class Shipment {
 		return item;
 	}
 
-	public void setItemid(Item item) {
+	public void setItem(Item item) {
+	
 		this.item = item;
 	}
+
 
 	public String getFromLocation() {
 		return fromLocation;
@@ -95,5 +98,6 @@ public class Shipment {
 	public void setAssignedTransporter(User assignedTransporter) {
 		this.assignedTransporter = assignedTransporter;
 	}
+
 	
 }
