@@ -65,4 +65,17 @@ public class CheckPointLog {
     public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
     }
+
+	public CheckPointLog(int checkPointLogId, Shipment shipment, String location, CheckpointStatus status,
+			LocalDateTime timeStamp) {
+		this.checkPointLogId = checkPointLogId;
+		this.shipment = shipment;
+		this.location = location;
+		this.status = status;
+		this.timeStamp = timeStamp;
+	}
+    public CheckPointLog() {
+    	
+    }
+    
 }

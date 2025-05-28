@@ -13,7 +13,12 @@ import com.Bridgelabz.DigitalSupplyChainTracker.entity.CheckPointLog;
 
 @Repository
 public interface CheckPointLogRepository extends JpaRepository<CheckPointLog, Integer> {
-  
-	List<CheckPointLog> findByShipmentId(Integer Shipment);
+
+    // Custom query method to find all logs by shipmentId
+//    List<CheckPointLog> findByShipmentId(Integer shipmentId);
+	List<CheckPointLog> findByShipmentShipmentId(Integer shipmentId);
+
+
 }
+
 

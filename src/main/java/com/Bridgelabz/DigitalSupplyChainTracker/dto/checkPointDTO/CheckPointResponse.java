@@ -1,4 +1,4 @@
-package com.Bridgelabz.DigitalSupplyChainTracker.dto;
+package com.Bridgelabz.DigitalSupplyChainTracker.dto.checkPointDTO;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.Bridgelabz.DigitalSupplyChainTracker.dto;
+package com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto;
 
 import java.time.LocalDate;
 
