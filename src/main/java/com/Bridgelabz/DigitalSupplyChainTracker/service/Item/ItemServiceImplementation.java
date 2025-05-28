@@ -16,14 +16,14 @@ import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemDetailResponseDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemSummaryResponseDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Item;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.User;
-import com.Bridgelabz.DigitalSupplyChainTracker.repository.ItemRepo;
+import com.Bridgelabz.DigitalSupplyChainTracker.repository.ItemRepository;
 import com.Bridgelabz.DigitalSupplyChainTracker.repository.UserRepository;
 
 @Service
 public class ItemServiceImplementation implements ItemService {
 	
 	@Autowired
-	ItemRepo itemRepository;
+	ItemRepository itemRepository;
 	
 	@Autowired
 	UserRepository userRepository;

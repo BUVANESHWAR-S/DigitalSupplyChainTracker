@@ -16,6 +16,3 @@ public enum Role {
 //            .orElseThrow(() -> new InvalidRoleException("Invalid role: " + roleStr));
 //    }
 }
-
-
-
