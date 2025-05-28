@@ -15,13 +15,14 @@ import lombok.AllArgsConstructor;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 public class Shipment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE )
 	private long shipmentId;
 	@ManyToOne
 	@JoinColumn(name = "itemid")
-	private Item itemid;
+	private Item item;
 	private String fromLocation;
 	private String toLocation;
 	private LocalDate expectedDelivery;
@@ -33,26 +34,26 @@ public class Shipment {
     private User assignedTransporter;
 
 	public enum CurrentStatus {
-		CREATED, 
-		IN_TRANSIT,
-		DELIVERED,
-		DELAYED
+		Created, 
+		In_transit,
+		Delivered,
+		Delayed
 	}
 
-	public long getShipmentid() {
+	public long getShipmentId() {
 		return shipmentId;
 	}
 
-	public void setShipmentid(long shipmentid) {
-		this.shipmentId = shipmentid;
+	public void setShipmentId(long shipmentId) {
+		this.shipmentId = shipmentId;
 	}
 
-	public Item getItemid() {
-		return itemid;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setItemid(Item itemid) {
-		this.itemid = itemid;
+	public void setItemid(Item item) {
+		this.item = item;
 	}
 
 	public String getFromLocation() {

@@ -1,12 +1,35 @@
 package com.Bridgelabz.DigitalSupplyChainTracker.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentRequest;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.ShipmentResponse;
+import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
 import com.Bridgelabz.DigitalSupplyChainTracker.service.Shipment.ShipmentService;
 
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
+@RestController
+@RequestMapping("/api/shipments")
 public class ShipmentController {
-	private ShipmentService shipmentService;
+
+    private final ShipmentService shipmentService;
+
+    @Autowired
+    public ShipmentController(ShipmentService shipmentService) {
+        this.shipmentService = shipmentService;
+    }
 
     @PostMapping
     public ResponseEntity<ShipmentResponse> createShipment(@RequestBody ShipmentRequest request) {
@@ -27,12 +50,12 @@ public class ShipmentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ShipmentResponseDTO>> getAllShipments() {
+    public ResponseEntity<List<ShipmentResponse>> getAllShipments() {
         return ResponseEntity.ok(shipmentService.getAllShipments());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ShipmentResponseDTO> getShipment(@PathVariable Long id) {
+    public ResponseEntity<ShipmentResponse> getShipment(@PathVariable Long id) {
         return ResponseEntity.ok(shipmentService.getShipmentById(id));
     }
 }

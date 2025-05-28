@@ -62,7 +62,7 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     private ShipmentResponse mapToResponseDto(Shipment s) {
         ShipmentResponse dto = new ShipmentResponse();
-        dto.setShipmentId(s.getshipmentid());
+        dto.setShipmentId(s.getShipmentId());
         dto.setItemName(s.getItem().getName());
         dto.setFromLocation(s.getFromLocation());
         dto.setToLocation(s.getToLocation());
