@@ -1,7 +1,9 @@
 package com.Bridgelabz.DigitalSupplyChainTracker.entity;
 
-import jakarta.persistence.Id; 
+import jakarta.persistence.Id;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.Utility.Role;
+import com.Bridgelabz.DigitalSupplyChainTracker.dto.UserDto.UserRequestDto;
 
 import jakarta.persistence.*;
 
@@ -18,6 +20,15 @@ public class User {
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+
+	public User(UserRequestDto user) {
+		this.name = user.getName();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.role = user.getRole();
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -57,8 +68,8 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
+	public User() {
 	
-	
+	}
 	
 }
