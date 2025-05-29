@@ -36,9 +36,7 @@ public class UserController {
 	public ResponseEntity<?> deleteUser(@PathVariable int id){
 		return userservice.deleteUser(id);
 	}
-	
-	//karun
-	
+	//code
 	
 }
 	
