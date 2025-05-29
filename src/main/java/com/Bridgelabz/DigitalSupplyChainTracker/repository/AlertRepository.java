@@ -6,10 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Alert;
+import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
 
 @Repository
 public interface AlertRepository extends JpaRepository<Alert, Integer> {
-	List<Alert> findbyResolved(boolean resolved);
-	List<Alert> findbyShipmentId(Integer shipmentId);
-	List<Alert> findByType(Alert.AlertType type);
+//	List<Alert> findByResolved(boolean resolved);
+//	List<Alert> findByShipment(Shipment shipment);
+//	List<Alert> findByType(Alert.AlertType type);
 }

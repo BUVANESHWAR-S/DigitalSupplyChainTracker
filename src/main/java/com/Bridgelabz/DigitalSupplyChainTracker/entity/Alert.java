@@ -13,7 +13,7 @@ public class Alert {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shipmentId", nullable = false)
-	private Shipment shipmentId;
+	private Shipment shipment;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
@@ -36,12 +36,12 @@ public class Alert {
 		this.alertid = alertid;
 	}
 
-	public Shipment getShipmentId() {
-		return shipmentId;
+	public Shipment getShipment() {
+		return shipment;
 	}
 
-	public void setShipmentId(Shipment shipmentId) {
-		this.shipmentId = shipmentId;
+	public void setShipment(Shipment shipment) {
+		this.shipment = shipment;
 	}
 
 	public AlertType getType() {
