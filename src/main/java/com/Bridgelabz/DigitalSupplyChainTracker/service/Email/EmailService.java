@@ -13,7 +13,7 @@ public class EmailService {
 
     public void send(String to, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("jawahar6343@gmail.com"); // Must match spring.mail.username
+        message.setFrom("dsct.alerts@gmail.com");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);
