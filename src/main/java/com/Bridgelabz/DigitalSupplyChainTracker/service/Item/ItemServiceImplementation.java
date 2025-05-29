@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.InvalidRoleException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.UserNotFoundException;
 import com.Bridgelabz.DigitalSupplyChainTracker.Utility.Role;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemCreateRequestDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemDetailResponseDTO;
@@ -38,7 +40,7 @@ public class ItemServiceImplementation implements ItemService {
 	    //checks if user is supplier
 	    if(!user.getRole().equals(Role.Supplier)) {
 //	    	Object error = new IllegalArgumentException("User is not a Supplier");
-	    	return new ResponseEntity<>("User is not Supplier",HttpStatus.UNAUTHORIZED);
+	    	throw new InvalidRoleException("Invalid Role to access");
 	    }
 	    
 	    //creating new item
@@ -66,12 +68,12 @@ public class ItemServiceImplementation implements ItemService {
 	public ResponseEntity<?> getItems(int userId) {
 		//checks if user is available
 	    User user = userRepository.findById(userId)
-	            .orElseThrow(() -> new IllegalArgumentException("User not found"));
+	            .orElseThrow(() ->  new UserNotFoundException("User not found"));
 	    
 	    
 	    //if user is not admin or not supplier 
 	    if (!user.getRole().equals(Role.Admin) && !user.getRole().equals(Role.Supplier)) {
-	        return new ResponseEntity<>("User is not Authorized", HttpStatus.UNAUTHORIZED);
+	    	throw new InvalidRoleException("Invalid Role to access");
 	    }
 		List<Item> items = itemRepository.findAll();
 		List<ItemSummaryResponseDTO> response = items.stream().map((item) ->new ItemSummaryResponseDTO(item.getId(),item.getName(),item.getCategory())).toList();

@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.InvalidIdException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.InvalidRoleException;
 import com.Bridgelabz.DigitalSupplyChainTracker.Exception.ShipmentNotFoundException;
 import com.Bridgelabz.DigitalSupplyChainTracker.Utility.Role;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.checkPointDTO.CheckPointResponse;
@@ -37,10 +40,10 @@ public class CheckPointLogService implements CheckPointLogServiceInterface{
     	
     	//checks if user is available
 	    User user = userRepository.findById(request.getTransporterId())
-	            .orElseThrow(() -> new IllegalArgumentException("Supplier not found"));
+	            .orElseThrow(() -> new IdNotFoundException("UserID not found!"));
 	    
 	    if(!user.getRole().equals(Role.Transporter)) {
-	    	return new ResponseEntity<>("Unauthorized",HttpStatus.UNAUTHORIZED);
+	    	throw new InvalidRoleException("Invalid Role Access");
 	    }
 	    
         // Fetch Shipment entity by ID
@@ -48,7 +51,7 @@ public class CheckPointLogService implements CheckPointLogServiceInterface{
                 .orElseThrow(() -> new ShipmentNotFoundException("Shipment not found with ID: " + request.getShipmentId()));
         
         if(shipment.getAssignedTransporter().getId() != user.getId()) {
-        	return new ResponseEntity<>("Unauthorized",HttpStatus.UNAUTHORIZED);
+        	throw new InvalidIdException("Invalid Id");
         }
 
         // Create new checkpoint log

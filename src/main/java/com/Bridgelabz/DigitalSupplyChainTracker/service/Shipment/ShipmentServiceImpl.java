@@ -33,7 +33,7 @@ public class ShipmentServiceImpl implements ShipmentService {
 
         // Fetch Item entity by ID, or throw exception if not found
         Item item = itemRepo.findById(dto.getItemId())
-            .orElseThrow(() -> new IdNotFoundException("ItemID is Invalid: " + dto.getItemId()));
+            .orElseThrow(() -> new IdNotFoundException("Invalid ItemID: " + dto.getItemId()));
 
         // Create new Shipment and set properties from DTO
         Shipment shipment = new Shipment();
@@ -50,8 +50,8 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     @Override
     public void assignTransporter(int shipmentId, int transporterId) {
-        Shipment shipment = shipmentRepo.findById(shipmentId).orElseThrow(() -> new RuntimeException("Shipment not found"));
-        User transporter = userRepo.findById(transporterId).orElseThrow(() -> new RuntimeException("Transporter not found"));
+        Shipment shipment = shipmentRepo.findById(shipmentId).orElseThrow(() -> new IdNotFoundException("Invalid ShipmentID"));
+        User transporter = userRepo.findById(transporterId).orElseThrow(() -> new IdNotFoundException("Invalid TransportID"));
 
         shipment.setAssignedTransporter(transporter);
         shipment.setCurrentStatus(Shipment.CurrentStatus.In_transit);
@@ -60,14 +60,14 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     @Override
     public void updateShipmentStatus(int id, Shipment.CurrentStatus status) {
-        Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Shipment not found"));
+        Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new IdNotFoundException("Invalid ShipmentID"));
         shipment.setCurrentStatus(status);
         shipmentRepo.save(shipment);
     }
 
     @Override
     public ShipmentResponse getShipmentById(int id) {
-        Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Shipment not found"));
+        Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new IdNotFoundException("Invalid ShipmentID"));
         return mapToResponseDto(shipment);
     }
 
