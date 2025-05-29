@@ -60,9 +60,13 @@ public class ShipmentServiceImpl implements ShipmentService {
     @Override
     public void updateShipmentStatus(int id, Shipment.CurrentStatus status) {
         Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Shipment not found"));
+        if (shipment.getCurrentStatus() == Shipment.CurrentStatus.Delivered) {
+            throw new IllegalStateException("Cannot change status after delivery");
+        }
         shipment.setCurrentStatus(status);
         shipmentRepo.save(shipment);
     }
+
 
     @Override
     public ShipmentResponse getShipmentById(int id) {

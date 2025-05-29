@@ -51,10 +51,6 @@ public class Item {
 	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
-	
-	public Item() {
-		
-	}
 
 	public Item(String name, String category, User supplier, LocalDateTime createdDate) {
 	

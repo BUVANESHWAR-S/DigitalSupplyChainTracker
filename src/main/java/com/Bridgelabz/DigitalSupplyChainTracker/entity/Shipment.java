@@ -38,7 +38,8 @@ public class Shipment {
 		Created, 
 		In_transit,
 		Delivered,
-		Delayed
+		Delayed,
+		Damaged
 	}
 
 	public int getShipmentId() {
