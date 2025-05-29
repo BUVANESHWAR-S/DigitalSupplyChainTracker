@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.AlertRequestDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.AlertResponseDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Alert;
-import com.Bridgelabz.DigitalSupplyChainTracker.entity.Item;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Shipment;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.User;
 import com.Bridgelabz.DigitalSupplyChainTracker.repository.AlertRepository;
