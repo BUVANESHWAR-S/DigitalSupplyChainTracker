@@ -11,7 +11,7 @@ import com.Bridgelabz.DigitalSupplyChainTracker.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-	User save(UserRequestDto user);
+	//User save(UserRequestDto user);
 
 	Optional<User> findByEmail(String email);
 
