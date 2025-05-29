@@ -1,6 +1,6 @@
 package com.Bridgelabz.DigitalSupplyChainTracker.service.Item;
 
-import java.net.http.HttpResponse;
+//import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
 import com.Bridgelabz.DigitalSupplyChainTracker.Utility.Role;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemCreateRequestDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.item.ItemDetailResponseDTO;
@@ -32,7 +33,7 @@ public class ItemServiceImplementation implements ItemService {
 		
 		//checks if user is available
 	    User user = userRepository.findById(item.getSupplierId())
-	            .orElseThrow(() -> new IllegalArgumentException("Supplier not found"));
+	            .orElseThrow(() -> new IdNotFoundException("Invalid ID"));
 	    
 	    //checks if user is supplier
 	    if(!user.getRole().equals(Role.Supplier)) {

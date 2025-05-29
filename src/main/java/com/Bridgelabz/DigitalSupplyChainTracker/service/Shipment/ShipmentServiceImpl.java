@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentRequest;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentResponse;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Item;
@@ -25,14 +26,14 @@ public class ShipmentServiceImpl implements ShipmentService {
     @Override
     public Shipment createShipment(ShipmentRequest dto) {
         // Logging values received in the DTO
-        System.out.println("Item ID: " + dto.getItemId());
-        System.out.println("From Location: " + dto.getFromLocation());
-        System.out.println("To Location: " + dto.getToLocation());
-        System.out.println("Expected Delivery: " + dto.getExpectedDelivery());
+//        System.out.println("Item ID: " + dto.getItemId());
+//        System.out.println("From Location: " + dto.getFromLocation());
+//        System.out.println("To Location: " + dto.getToLocation());
+//        System.out.println("Expected Delivery: " + dto.getExpectedDelivery());
 
         // Fetch Item entity by ID, or throw exception if not found
         Item item = itemRepo.findById(dto.getItemId())
-            .orElseThrow(() -> new RuntimeException("Item not found with ID: " + dto.getItemId()));
+            .orElseThrow(() -> new IdNotFoundException("ItemID is Invalid: " + dto.getItemId()));
 
         // Create new Shipment and set properties from DTO
         Shipment shipment = new Shipment();
