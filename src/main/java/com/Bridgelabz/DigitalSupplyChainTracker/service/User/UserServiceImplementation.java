@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IncorrectPasswordException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.UserNotFoundException;
 import com.Bridgelabz.DigitalSupplyChainTracker.Utility.Role;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.LoginDto.LoginRequestDto;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.UserDto.UserRequestDto;
@@ -35,12 +38,11 @@ public class UserServiceImplementation implements UserService{
 	public ResponseEntity<?> LoginUser(LoginRequestDto loginuser) {
 		Optional<User> optionaluser= userrepository.findByEmail(loginuser.getEmail());
 		if(optionaluser.isEmpty()) {
-			return new ResponseEntity<>("User Doesn't Exist or Invalid Emain", HttpStatus.UNAUTHORIZED);
+			throw new UserNotFoundException("Invalid Email");
 		}
 		User searchUser = optionaluser.get();
 		if(!searchUser.getPassword().equals(loginuser.getPassword())) {
-			return new ResponseEntity<>("Incorrect Password", HttpStatus.UNAUTHORIZED);
-		}
+			throw new IncorrectPasswordException("Incorrect Password");		}
 		LoginResponseDto loginResponse = new LoginResponseDto(searchUser);
 		return new ResponseEntity<>(loginResponse, HttpStatus.OK);
 	}
@@ -60,7 +62,7 @@ public class UserServiceImplementation implements UserService{
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>("WRONG USER ACCESS",HttpStatus.OK);
+			throw new IdNotFoundException("Invalid UserID");
 		}
 		
 	}
@@ -74,7 +76,7 @@ public class UserServiceImplementation implements UserService{
 			
 		}
 		else {
-			return new ResponseEntity<>("WRONG ID!!! CANNOT BE DELETED",HttpStatus.OK);
+			throw new IdNotFoundException("Id Not Found");
 			
 		}
 	}
