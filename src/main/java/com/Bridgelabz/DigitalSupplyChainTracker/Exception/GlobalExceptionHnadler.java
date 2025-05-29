@@ -32,6 +32,11 @@ public class GlobalExceptionHnadler {
 	public ResponseEntity<String> HandlingInvalidIdException(InvalidIdException exception){
 		return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
 	}
+	@ExceptionHandler(InvalidStatusException.class)
+	public ResponseEntity<String> HandlingInvalidStatusException(InvalidStatusException exception){
+		return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	
 	
 
 }

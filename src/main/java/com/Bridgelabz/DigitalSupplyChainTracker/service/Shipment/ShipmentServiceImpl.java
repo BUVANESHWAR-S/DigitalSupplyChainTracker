@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.InvalidRoleException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.InvalidStatusException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Utility.Role;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentRequest;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.shipmentDto.ShipmentResponse;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Item;
@@ -48,22 +51,31 @@ public class ShipmentServiceImpl implements ShipmentService {
     }
 
 
-    @Override
     public void assignTransporter(int shipmentId, int transporterId) {
-        Shipment shipment = shipmentRepo.findById(shipmentId).orElseThrow(() -> new IdNotFoundException("Invalid ShipmentID"));
-        User transporter = userRepo.findById(transporterId).orElseThrow(() -> new IdNotFoundException("Invalid TransportID"));
+    	 Shipment shipment = shipmentRepo.findById(shipmentId)
+                 .orElseThrow(() -> new IdNotFoundException("Invalid ShipmentID"));
 
-        shipment.setAssignedTransporter(transporter);
-        shipment.setCurrentStatus(Shipment.CurrentStatus.In_transit);
-        shipmentRepo.save(shipment);
+         User transporter = userRepo.findById(transporterId)
+                 .orElseThrow(() -> new IdNotFoundException("Invalid TransporterID"));
+
+         //  Check if the user is actually a TRANSPORTER
+         if (transporter.getRole() != Role.Transporter) {
+             throw new InvalidRoleException("User is not a transporter");
+         }
+
+         shipment.setAssignedTransporter(transporter);
+         shipment.setCurrentStatus(Shipment.CurrentStatus.In_transit);
+         shipmentRepo.save(shipment);
+
     }
+
 
     @Override
     public void updateShipmentStatus(int id, Shipment.CurrentStatus status) {
 
-        Shipment shipment = shipmentRepo.findById(id).orElseThrow(() -> new RuntimeException("Shipment not found"));
+        Shipment shipment = shipmentRepo.findById(id).orElseThrow(() ->  new IdNotFoundException("Invalid ShipmentID"));
         if (shipment.getCurrentStatus() == Shipment.CurrentStatus.Delivered) {
-            throw new IllegalStateException("Cannot change status after delivery");
+            throw new InvalidStatusException("Cannot change status after delivery");
         }
 
         shipment.setCurrentStatus(status);

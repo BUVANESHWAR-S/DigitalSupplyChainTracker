@@ -75,7 +75,7 @@ public class ItemServiceImplementation implements ItemService {
 	    if (!user.getRole().equals(Role.Admin) && !user.getRole().equals(Role.Supplier)) {
 	    	throw new InvalidRoleException("Invalid Role to access");
 	    }
-		List<Item> items = itemRepository.findAll();
+		List<Item> items = itemRepository.findAll().stream().filter((item)-> item.getSupplier().getId() == userId).toList();
 		List<ItemSummaryResponseDTO> response = items.stream().map((item) ->new ItemSummaryResponseDTO(item.getId(),item.getName(),item.getCategory())).toList();
 		return new ResponseEntity<>(response,HttpStatus.OK);
 
