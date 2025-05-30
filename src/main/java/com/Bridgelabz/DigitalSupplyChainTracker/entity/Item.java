@@ -60,6 +60,10 @@ public class Item {
 		this.createdDate = createdDate;
 	}
 
+	public Item() {
+		
+	}
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
