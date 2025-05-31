@@ -272,13 +272,13 @@ com.supplytracker
 
 ## 👥 Authors
 
-•⁠  ⁠[BUVANESHWAR S](https://github.com/nandinideodia) – Project Lead, Exception Handling & Password Hashing
-•⁠  ⁠[JAWAHAR V D](https://github.com/piyushhudda) – Item & Database Design
-•⁠  ⁠[SHREYAN KRISHNA](https://github.com/SaiVarun107) – Shipment Management & Testing
-•⁠  ⁠[DINAKARAN R](https://github.com/satyakoushik1) – Alerts and Notifications & Java Mail Sender 
-•⁠  ⁠[KARUN D M](https://github.com/SpandanDS) – User and Role Management & Authentication Testing
-•⁠  ⁠[KOUSHIK S](https://github.com/shanmukhbillurii) – Authentication Management & User and Role Testing
-•⁠  ⁠[D MUKESH KUMAR](https://github.com/GOLLAG) – Checkpoints & Event Logs & Database Design
+•⁠  ⁠[BUVANESHWAR S]([https://github.com/nandinideodia](https://github.com/BUVANESHWAR-S)) – Project Lead, Exception Handling & Password Hashing  
+•⁠  ⁠[JAWAHAR V D](https://github.com/jawahar2003) – Item & Database Design  
+•⁠  ⁠[SHREYAN KRISHNA](https://github.com/shreyankrish) – Shipment Management & Testing  
+•⁠  ⁠[DINAKARAN R](https://github.com/ryugale) – Alerts and Notifications & Java Mail Sender  
+•⁠  ⁠[KARUN D M](https://github.com/Karun-DM) – User and Role Management & Authentication Testing  
+•⁠  ⁠[KOUSHIK S](https://github.com/KOUSHIK6814) – Authentication Management & User and Role Testing  
+•⁠  ⁠[D MUKESH KUMAR](https://github.com/Mukesh6612) – Checkpoints & Event Logs & Database Design  
 
 
 ---
