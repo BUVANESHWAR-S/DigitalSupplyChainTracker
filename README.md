@@ -129,13 +129,13 @@ PUT /api/alerts/{id}/resolve
 
 ## 🖼 ER Diagram
 
-![ER Diagram](ER-diagram.png)
+![ER Diagram]()
 
 ---
 
 ## 🧭 Class Diagram
 
-![Class Diagram](Class-diagram.jpg)
+![Class Diagram]([Class-diagram.jpg](https://github.com/BUVANESHWAR-S/DigitalSupplyChainTracker/blob/f8cf955f52a7abc5ae41c1ddabb0b7d254cede73/ER-Diagram.jpeg))
 
 ---
 
