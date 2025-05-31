@@ -6,6 +6,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
@@ -24,9 +25,12 @@ import com.Bridgelabz.DigitalSupplyChainTracker.dto.LoginDto.LoginResponseDto;
 public class UserServiceImplementation implements UserService{
 	
 	@Autowired UserRepository userrepository;
+	@Autowired PasswordEncoder passwordEncoder;
 
 	@Override
 	public ResponseEntity<?> RegisterUser(UserRequestDto user) {
+		String encodedpassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedpassword);
 		User newUser = new User(user);
 		
 		userrepository.save(newUser);
@@ -41,7 +45,7 @@ public class UserServiceImplementation implements UserService{
 			throw new UserNotFoundException("Invalid Email");
 		}
 		User searchUser = optionaluser.get();
-		if(!searchUser.getPassword().equals(loginuser.getPassword())) {
+		if(!passwordEncoder.matches(loginuser.getPassword(), searchUser.getPassword())) {
 			throw new IncorrectPasswordException("Incorrect Password");		}
 		LoginResponseDto loginResponse = new LoginResponseDto(searchUser);
 		return new ResponseEntity<>(loginResponse, HttpStatus.OK);
