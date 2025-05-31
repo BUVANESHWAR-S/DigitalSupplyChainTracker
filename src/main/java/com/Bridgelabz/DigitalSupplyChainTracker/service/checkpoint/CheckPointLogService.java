@@ -3,13 +3,17 @@ package com.Bridgelabz.DigitalSupplyChainTracker.service.checkpoint;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.InvalidIdException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.InvalidRoleException;
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.ShipmentNotFoundException;
 import com.Bridgelabz.DigitalSupplyChainTracker.Utility.Role;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.checkPointDTO.CheckPointResponse;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.checkPointDTO.checkPointRequest;
@@ -36,18 +40,18 @@ public class CheckPointLogService implements CheckPointLogServiceInterface{
     	
     	//checks if user is available
 	    User user = userRepository.findById(request.getTransporterId())
-	            .orElseThrow(() -> new IllegalArgumentException("Supplier not found"));
+	            .orElseThrow(() -> new IdNotFoundException("UserID not found!"));
 	    
 	    if(!user.getRole().equals(Role.Transporter)) {
-	    	return new ResponseEntity<>("Unauthorized",HttpStatus.UNAUTHORIZED);
+	    	throw new InvalidRoleException("Invalid Role Access");
 	    }
 	    
         // Fetch Shipment entity by ID
         Shipment shipment = shipmentRepository.findById(request.getShipmentId())
-                .orElseThrow(() -> new RuntimeException("Shipment not found with ID: " + request.getShipmentId()));
+                .orElseThrow(() -> new ShipmentNotFoundException("Shipment not found with ID: " + request.getShipmentId()));
         
         if(shipment.getAssignedTransporter().getId() != user.getId()) {
-        	return new ResponseEntity<>("Unauthorized",HttpStatus.UNAUTHORIZED);
+        	throw new InvalidIdException("Invalid Id");
         }
 
         // Create new checkpoint log

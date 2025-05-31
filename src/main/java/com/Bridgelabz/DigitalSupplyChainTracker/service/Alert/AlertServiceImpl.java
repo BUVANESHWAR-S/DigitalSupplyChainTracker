@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Bridgelabz.DigitalSupplyChainTracker.Exception.IdNotFoundException;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.AlertRequestDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.dto.AlertResponseDTO;
 import com.Bridgelabz.DigitalSupplyChainTracker.entity.Alert;
@@ -42,7 +43,7 @@ public class AlertServiceImpl implements AlertService {
 
     @Override
     public AlertResponseDTO createAlert(AlertRequestDTO request, Alert.AlertType type) {
-        Shipment shipment = shipmentrepository.findById(request.getShipmentId()).orElseThrow(() -> new RuntimeException("Shipment not found"));
+        Shipment shipment = shipmentrepository.findById(request.getShipmentId()).orElseThrow(() -> new IdNotFoundException("Invalid ShipmentID"));
  
         Alert alert = new Alert();
         alert.setShipment(shipment);
@@ -66,7 +67,7 @@ public class AlertServiceImpl implements AlertService {
 
     @Override
     public AlertResponseDTO resolveAlert(int alertid) {
-        Alert alert = alertrepository.findById(alertid).orElseThrow(() -> new RuntimeException("Alert not found"));
+        Alert alert = alertrepository.findById(alertid).orElseThrow(() -> new IdNotFoundException("Invalid AlertID"));
         alert.setResolved(true);
         Alert response = alertrepository.save(alert);
         User user = alert.getShipment().getItem().getSupplier();
