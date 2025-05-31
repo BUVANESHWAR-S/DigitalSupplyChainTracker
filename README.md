@@ -142,20 +142,21 @@ PUT /api/alerts/{id}/resolve
 ## ⚙ Sample Configuration (⁠ application.properties ⁠)
 
 ⁠ properties
-spring.application.name=DigitalSupplyChainTracker
-spring.datasource.url=jdbc:mysql://10.9.69.57:3306/supply_tracker
-spring.datasource.username=mukesh
-spring.datasource.password=mukesh
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.security.jwt.secret=secretkey123
-spring.security.jwt.expiration=86400000
-spring.mail.username=dsct.alerts@gmail.com
-spring.mail.password=mgex fkex gwwh uwna
-spring.mail.host=smtp.gmail.com
-spring.mail.port=587
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
+<span style ="color:red">spring.application.name</span>=DigitalSupplyChainTracker  
+<span style ="color:red">spring.datasource.url</span>=jdbc:mysql://10.9.69.57:3306/supply_tracker  
+<span style ="color:red">spring.datasource.username</span>=mukesh  
+<span style ="color:red">spring.datasource.passwor</span>d=mukesh  
+<span style ="color:red">spring.jpa.hibernate.ddl-auto</span>=update  
+<span style ="color:red">spring.jpa.show-sql</span>=true  
+<span style ="color:red">spring.security.jwt.secret</span>=secretkey123  
+<span style ="color:red">spring.security.jwt.expiration</span>=86400000  
+<span style ="color:red">spring.mail.username</span>=dsct.alerts@gmail.com  
+<span style ="color:red">spring.mail.password</span>=mgex fkex gwwh uwna  
+<span style ="color:red">spring.mail.host</span>=smtp.gmail.com  
+<span style ="color:red">spring.mail.port</span>=587  
+<span style ="color:red">spring.mail.properties.mail.smtp.auth</span>=true  
+<span style ="color:red">spring.mail.properties.mail.smtp.starttls.enable</span>=true  
+
 
  ⁠
 
