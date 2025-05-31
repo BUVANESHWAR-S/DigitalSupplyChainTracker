@@ -272,7 +272,7 @@ com.supplytracker
 
 ## 👥 Authors
 
-•⁠  ⁠[BUVANESHWAR S]([https://github.com/nandinideodia](https://github.com/BUVANESHWAR-S)) – Project Lead, Exception Handling & Password Hashing  
+•⁠  ⁠[BUVANESHWAR S](https://github.com/BUVANESHWAR-S) – Project Lead, Exception Handling & Password Hashing  
 •⁠  ⁠[JAWAHAR V D](https://github.com/jawahar2003) – Item & Database Design  
 •⁠  ⁠[SHREYAN KRISHNA](https://github.com/shreyankrish) – Shipment Management & Testing  
 •⁠  ⁠[DINAKARAN R](https://github.com/ryugale) – Alerts and Notifications & Java Mail Sender  
