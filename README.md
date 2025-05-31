@@ -10,11 +10,11 @@ Logistics / Manufacturing / Retail
 
 ## 🎯 Objectives
 
-•⁠  ⁠Digitally track and monitor items across the supply chain.
-•⁠  ⁠Record item statuses at every checkpoint.
-•⁠  ⁠Provide role-based access to different users.
-•⁠  ⁠Generate alerts for delays or damage.
-•⁠  ⁠Offer real-time visibility with reports and dashboards.
+•⁠  ⁠Digitally track and monitor items across the supply chain.  
+•⁠  ⁠Record item statuses at every checkpoint.  
+•⁠  ⁠Provide role-based access to different users.  
+•⁠  ⁠Generate alerts for delays or damage.  
+•⁠  ⁠Offer real-time visibility with reports and dashboards.  
 
 ---
 
@@ -36,11 +36,11 @@ Logistics / Manufacturing / Retail
 
 ## 🧩 Key Modules
 
-1.⁠ ⁠*User & Role Management*
-2.⁠ ⁠*Item Tracking*
-3. *Shipment Tracking*
-4.⁠ ⁠*Checkpoints & Event Logs*
-5.⁠ ⁠*Alerts & Notifications*
+1.⁠ ⁠*User & Role Management*  
+2.⁠ ⁠*Item Tracking*  
+3. *Shipment Tracking*  
+4.⁠ ⁠*Checkpoints & Event Logs*  
+5.⁠ ⁠*Alerts & Notifications*  
 
 ---
 
