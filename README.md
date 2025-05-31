@@ -129,13 +129,13 @@ PUT /api/alerts/{id}/resolve
 
 ## 🖼 ER Diagram
 
-![ER Diagram]()
+![ER Diagram](https://github.com/BUVANESHWAR-S/DigitalSupplyChainTracker/blob/f8cf955f52a7abc5ae41c1ddabb0b7d254cede73/ER-Diagram.jpeg)
 
 ---
 
 ## 🧭 Class Diagram
 
-![Class Diagram]([Class-diagram.jpg](https://github.com/BUVANESHWAR-S/DigitalSupplyChainTracker/blob/f8cf955f52a7abc5ae41c1ddabb0b7d254cede73/ER-Diagram.jpeg))
+![Class Diagram](https://github.com/BUVANESHWAR-S/DigitalSupplyChainTracker/blob/1a288b201e6ad201d97aef6c66006e41c8c4e8d5/Class-Diagram.jpeg)
 
 ---
 
